@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.Timer;
 
 
 /** An example command that uses an example subsystem. */
-public class TurnRight extends CommandBase {
+public class TurnLeft extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
 
   RomiDrivetrain drivetrain;
 
-  public Timer turnRightTimer = new Timer();
+  public Timer turnLeftTimer = new Timer();
   public double time = 0.2;
   public double power = 0.6;
   /**
@@ -24,7 +24,7 @@ public class TurnRight extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public TurnRight(RomiDrivetrain d_drivetrain, double p_power) {
+  public TurnLeft(RomiDrivetrain d_drivetrain, double p_power) {
     drivetrain = d_drivetrain;
     //Time determines how long the robot drives forward
     power = p_power;
@@ -36,14 +36,14 @@ public class TurnRight extends CommandBase {
   @Override
   public void initialize() {
     drivetrain.arcadeDrive(power, 0.0);
-    turnRightTimer.reset();
-    turnRightTimer.start();
+    turnLeftTimer.reset();
+    turnLeftTimer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.arcadeDrive(power, 1);
+    drivetrain.arcadeDrive(power, -1);
   }
 
   // Called once the command ends or is interrupted.
@@ -55,6 +55,6 @@ public class TurnRight extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return turnRightTimer.get() >= time;
+    return turnLeftTimer.get() >= time;
   }
 }

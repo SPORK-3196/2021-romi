@@ -4,10 +4,9 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import frc.robot.subsystems.RomiDrivetrain;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.Timer;
 
 
 /** An example command that uses an example subsystem. */
@@ -27,9 +26,9 @@ public class DriveForwardTimed extends CommandBase {
    */
   public DriveForwardTimed(RomiDrivetrain d_drivetrain, double p_time, double p_power) {
     drivetrain = d_drivetrain;
-    time = p_time
+    time = p_time;
     //Time determines how long the robot drives forward
-    power = p_power
+    power = p_power;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drivetrain);
   }
@@ -37,7 +36,7 @@ public class DriveForwardTimed extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    drivetrain.drivetrain.arcadeDrive(power, 0.0);
+    drivetrain.arcadeDrive(power, 0.0);
     driveTimer.reset();
     driveTimer.start();
   }
@@ -45,13 +44,13 @@ public class DriveForwardTimed extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.drivetrain.arcadeDrive(power, 0;
+    drivetrain.arcadeDrive(power, 0);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drivetrain.drivetrain.arcadeDrive(0.0, 0.0);
+    drivetrain.arcadeDrive(0.0, 0.0);
   }
 
   // Returns true when the command should end.
