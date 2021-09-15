@@ -19,6 +19,7 @@ public class AutoMovement extends SequentialCommandGroup{
             //Drive forward the specified amount of time
             new DriveForwardTimed(drivetrain, 1.0, -0.6), 
             new TurnRight(drivetrain, -0.6),
+            new TimedPause(1.0),
             new TurnLeft(drivetrain, -0.6),
             new DriveBackwardsTimed(drivetrain, 1.0, -0.6)
             //DriveForwardTimed command using the drivetrain object m_romiDrivetrain and with a power -0.6, for 1 second
