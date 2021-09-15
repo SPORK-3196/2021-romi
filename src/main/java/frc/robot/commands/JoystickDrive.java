@@ -38,8 +38,13 @@ public class JoystickDrive extends CommandBase {
   public void execute() {
     double leftX = Robot.controllerDrive.getX(Hand.kLeft);
     double leftY = Robot.controllerDrive.getY(Hand.kLeft);
+    boolean moveForward = Robot.controllerDrive.getBumper(Hand.kRight);
     //System.out.println("Functional");
     drivetrain.arcadeDrive(leftY * -1, leftX * 1);
+    if(moveForward){
+      drivetrain.arcadeDrive(0.8, 0.0);
+    }
+
   }
 
   // Called once the command ends or is interrupted.
