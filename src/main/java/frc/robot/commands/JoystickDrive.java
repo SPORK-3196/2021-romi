@@ -39,10 +39,14 @@ public class JoystickDrive extends CommandBase {
     double leftX = Robot.controllerDrive.getX(Hand.kLeft);
     double leftY = Robot.controllerDrive.getY(Hand.kLeft);
     boolean moveForward = Robot.controllerDrive.getBumper(Hand.kRight);
+    boolean moveBackward = Robot.controllerDrive.getBumper(Hand.kLeft);
     //System.out.println("Functional");
     drivetrain.arcadeDrive(leftY * -1, leftX * 1);
     if(moveForward){
       drivetrain.arcadeDrive(0.8, 0.0);
+    }
+    if(moveBackward){
+      drivetrain.arcadeDrive(-0.8, 0.0);
     }
 
   }
