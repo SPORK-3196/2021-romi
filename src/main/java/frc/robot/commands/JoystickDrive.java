@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
 /** An example command that uses an example subsystem. */
-public class ControllerDrive extends CommandBase {
+public class JoystickDrive extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
 
@@ -21,7 +21,7 @@ public class ControllerDrive extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ControllerDrive(RomiDrivetrain d_drivetrain) {
+  public JoystickDrive(RomiDrivetrain d_drivetrain) {
     drivetrain = d_drivetrain;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drivetrain);

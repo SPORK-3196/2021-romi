@@ -6,7 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.ControllerDrive;
+import frc.robot.commands.JoystickDrive;
+import frc.robot.commands.RightTriggerForward;
 import frc.robot.commands.AutoMovement;
 import frc.robot.subsystems.RomiDrivetrain;
 //import frc.robot.commands.TurnRight;
@@ -22,8 +23,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final RomiDrivetrain m_romiDrivetrain = new RomiDrivetrain();
-
-  private final ControllerDrive m_movementCommand = new ControllerDrive(m_romiDrivetrain);
+  private final RightTriggerForward m_forwardRT = new RightTriggerForward(m_romiDrivetrain);
+  private final JoystickDrive m_joystickCommand = new JoystickDrive(m_romiDrivetrain);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -38,8 +39,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    m_romiDrivetrain.setDefaultCommand(m_movementCommand);
-
+    m_romiDrivetrain.setDefaultCommand(m_joystickCommand);
+    new JoystickButton(controllerDrive, controllerDrive.Button.kX.value)
+    .whenActive(m_forwardRT);
+    //.whenActive(m_forwardRT);
 
   }
 
